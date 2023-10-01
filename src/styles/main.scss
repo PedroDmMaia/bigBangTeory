@@ -1,0 +1,82 @@
+@use 'reset';
+@use 'variaveis';
+@use 'hero';
+@use 'soundtrack';
+@use 'main-actors';
+@use 'to-top';
+
+@font-face {
+    font-family: avenir;
+    src: url(../../assets/fonts/Avenir-Regular.woff2);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: avenir;
+    src: url(../../assets/fonts/Avenir-Bold.woff2);
+    font-weight: 700;
+}
+
+@mixin text($font-size: 20px) {
+    font-size: $font-size;
+    line-height: $font-size + 10px;
+    color: variaveis.$corText;
+}
+
+@mixin title($font-size: 40px, $marginBottom: 70px) {
+    @include text($font-size);
+    color: variaveis.$corTitulo;
+    margin-bottom: $marginBottom;
+}
+
+body {
+    background: linear-gradient(50deg, rgba(88, 18, 93, 100) 21%, rgba(31, 33, 104, 20) 71%);
+}
+
+.container {
+    padding: 5.6vw 4vw;
+}
+
+.title {
+    @include title;
+    text-align: center;
+    border-bottom: 2px solid variaveis.$corTitulo;
+    padding-bottom: 12px;
+}
+
+.title--small {
+    @include title(28px, 30px);
+}
+
+.text {
+    @include text;
+}
+
+.image-with-text {
+    &__content {
+        display: flex;
+
+        @media (max-width: 1023px) {
+            flex-direction: column;
+        }
+
+        img {
+            width: 50%;
+            border-radius: 16px;
+            margin-right: 80px;
+
+            @media (max-width: 1023px) {
+                margin: 0 auto;
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+
+        &__text {
+            p {
+                margin-bottom: 20px;
+                text-align: justify;
+            }
+        }
+    }
+}
